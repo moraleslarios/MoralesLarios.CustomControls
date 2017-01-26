@@ -1,0 +1,67 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoralesLarios.WPFClientTests", "MoralesLarios.WPFClientTests\MoralesLarios.WPFClientTests.csproj", "{440DB6F1-94CA-41B8-A71D-60A635A79B25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoralesLarios.CustomsControls", "MoralesLarios.CustomsControls\MoralesLarios.CustomsControls.csproj", "{ECC6B608-D349-4A79-ABFD-3EB6C131C3B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoralesLarios.CustomsControls.Tests", "MoralesLarios.CustomsControls.Tests\MoralesLarios.CustomsControls.Tests.csproj", "{39FFDE3B-F490-4F39-A38E-FDB5CE3766E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfSressTests", "WpfSressTests\WpfSressTests.csproj", "{850DEDE9-3AF9-4D25-A8AA-36E0C5C4B443}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFTests2", "WPFTests2\WPFTests2.csproj", "{DBF31121-6DA5-4D79-A857-95F47E664FF9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{440DB6F1-94CA-41B8-A71D-60A635A79B25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{440DB6F1-94CA-41B8-A71D-60A635A79B25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{440DB6F1-94CA-41B8-A71D-60A635A79B25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{440DB6F1-94CA-41B8-A71D-60A635A79B25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECC6B608-D349-4A79-ABFD-3EB6C131C3B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECC6B608-D349-4A79-ABFD-3EB6C131C3B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECC6B608-D349-4A79-ABFD-3EB6C131C3B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECC6B608-D349-4A79-ABFD-3EB6C131C3B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39FFDE3B-F490-4F39-A38E-FDB5CE3766E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39FFDE3B-F490-4F39-A38E-FDB5CE3766E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39FFDE3B-F490-4F39-A38E-FDB5CE3766E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39FFDE3B-F490-4F39-A38E-FDB5CE3766E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{850DEDE9-3AF9-4D25-A8AA-36E0C5C4B443}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{850DEDE9-3AF9-4D25-A8AA-36E0C5C4B443}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{850DEDE9-3AF9-4D25-A8AA-36E0C5C4B443}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{850DEDE9-3AF9-4D25-A8AA-36E0C5C4B443}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBF31121-6DA5-4D79-A857-95F47E664FF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBF31121-6DA5-4D79-A857-95F47E664FF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBF31121-6DA5-4D79-A857-95F47E664FF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBF31121-6DA5-4D79-A857-95F47E664FF9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://moraleslarios.visualstudio.com/defaultcollection
+		SccProjectUniqueName0 = MoralesLarios.CustomsControls.Tests\\MoralesLarios.CustomsControls.Tests.csproj
+		SccProjectName0 = MoralesLarios.CustomsControls.Tests
+		SccLocalPath0 = MoralesLarios.CustomsControls.Tests
+		SccProjectUniqueName1 = MoralesLarios.CustomsControls\\MoralesLarios.CustomsControls.csproj
+		SccProjectName1 = MoralesLarios.CustomsControls
+		SccLocalPath1 = MoralesLarios.CustomsControls
+		SccProjectUniqueName2 = MoralesLarios.WPFClientTests\\MoralesLarios.WPFClientTests.csproj
+		SccProjectName2 = MoralesLarios.WPFClientTests
+		SccLocalPath2 = MoralesLarios.WPFClientTests
+		SccProjectUniqueName3 = WpfSressTests\\WpfSressTests.csproj
+		SccProjectName3 = WpfSressTests
+		SccLocalPath3 = WpfSressTests
+		SccProjectUniqueName4 = WPFTests2\\WPFTests2.csproj
+		SccProjectName4 = WPFTests2
+		SccLocalPath4 = WPFTests2
+		SccLocalPath5 = .
+	EndGlobalSection
+EndGlobal

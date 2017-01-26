@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>MoralesLarios.CustomsControls</id>
+    <version>0.7.0.0</version>
+    <title>CustomsControls</title>
+    <authors>Juan Francisco Morales Larios</authors>
+    <owners>Juan Francisco Morales Larios</owners>
+    <projectUrl>http://puntonetalpunto.blogspot.com.es/</projectUrl>
+    <iconUrl>https://drive.google.com/open?id=0B2hueHRCv0E7Vzd6NDZaOV9WQTg</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>XAML Customs Controls</description>
+    <releaseNotes>Beta Version</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>Morales Larios MoralesLarios Customs Controls WPF XAML</tags>
+  </metadata>
+</package>

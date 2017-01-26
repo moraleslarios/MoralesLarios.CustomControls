@@ -1,0 +1,23 @@
+﻿<Window x:Class="MoralesLarios.WPFClientTests.SearchAllTestsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ignore="http://www.galasoft.ch/ignore"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:cc="clr-namespace:MoralesLarios.CustomsControls;assembly=MoralesLarios.CustomsControls"
+        mc:Ignorable="d ignore"
+        DataContext="{Binding SearchAllTest, Source={StaticResource Locator}}">
+
+    <StackPanel>
+        <cc:SearchAll x:Name="searchAll" Width="200" Height="40" HorizontalAlignment="Left" ItemsSource="{Binding Customers}" NumberSugerencyElements="20" FilterClass="Contains" IsKeySensitive="False" >
+
+        </cc:SearchAll>
+
+        <DataGrid AutoGenerateColumns="True" IsReadOnly="True" ItemsSource="{Binding Customers}" HorizontalAlignment="Left"/>
+
+
+
+
+    </StackPanel>
+</Window>
