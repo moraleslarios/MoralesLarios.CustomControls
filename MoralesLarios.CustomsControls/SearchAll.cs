@@ -23,17 +23,6 @@ using MoralesLarios.CustomsControls.HelpControls.EventArgs;
 namespace MoralesLarios.CustomsControls
 {
 
-
-            //    textboxPrincipal   = GetTemplateChild("PART_Text") as TextBox;
-            //textboxSearch      = GetTemplateChild("PART_Search") as TextBox;
-            //popup              = GetTemplateChild("PART_PopUp") as Popup;
-            //CloseButtonPopUp   = GetTemplateChild("PART_ButtonClosePopPup") as Button;
-            //buttonCancelFilter = GetTemplateChild("PART_ButtonCancelFilter") as Button;
-            //buttonFilter       = GetTemplateChild("PART_ButonFilter") as Button;
-            //filterPanel        = GetTemplateChild("PART_FilterPanel") as StackPanel;
-            //imgFilter          = GetTemplateChild("PART_ImgFilter") as Image;
-
-
     [old.ToolboxBitmap(typeof(SearchAll), "SearchAll.bmp")]
     [TemplatePart(Name = "PART_Text"                , Type = typeof(TextBox   ))]
     [TemplatePart(Name = "PART_Search"              , Type = typeof(TextBox   ))]
