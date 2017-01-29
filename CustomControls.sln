@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfSressTests", "WpfSressTe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFTests2", "WPFTests2\WPFTests2.csproj", "{DBF31121-6DA5-4D79-A857-95F47E664FF9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{9ACED6F9-6934-40CC-A7DA-D60B41D92A71}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,26 +44,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 6
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://moraleslarios.visualstudio.com/defaultcollection
-		SccProjectUniqueName0 = MoralesLarios.CustomsControls.Tests\\MoralesLarios.CustomsControls.Tests.csproj
-		SccProjectName0 = MoralesLarios.CustomsControls.Tests
-		SccLocalPath0 = MoralesLarios.CustomsControls.Tests
-		SccProjectUniqueName1 = MoralesLarios.CustomsControls\\MoralesLarios.CustomsControls.csproj
-		SccProjectName1 = MoralesLarios.CustomsControls
-		SccLocalPath1 = MoralesLarios.CustomsControls
-		SccProjectUniqueName2 = MoralesLarios.WPFClientTests\\MoralesLarios.WPFClientTests.csproj
-		SccProjectName2 = MoralesLarios.WPFClientTests
-		SccLocalPath2 = MoralesLarios.WPFClientTests
-		SccProjectUniqueName3 = WpfSressTests\\WpfSressTests.csproj
-		SccProjectName3 = WpfSressTests
-		SccLocalPath3 = WpfSressTests
-		SccProjectUniqueName4 = WPFTests2\\WPFTests2.csproj
-		SccProjectName4 = WPFTests2
-		SccLocalPath4 = WPFTests2
-		SccLocalPath5 = .
 	EndGlobalSection
 EndGlobal

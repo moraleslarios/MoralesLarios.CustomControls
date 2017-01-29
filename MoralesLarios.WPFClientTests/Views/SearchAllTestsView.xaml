@@ -10,7 +10,8 @@
         DataContext="{Binding SearchAllTest, Source={StaticResource Locator}}">
 
     <StackPanel>
-        <cc:SearchAll x:Name="searchAll" Width="200" Height="40" HorizontalAlignment="Left" ItemsSource="{Binding Customers}" NumberSugerencyElements="20" FilterClass="Contains" IsKeySensitive="False" >
+        <cc:SearchAll Margin="200" x:Name="searchAll" Width="200" Height="40" HorizontalAlignment="Left" ItemsSource="{Binding Customers}" NumberSugerencyElements="20" FilterClass="Contains" IsKeySensitive="False" >
+
 
         </cc:SearchAll>
 

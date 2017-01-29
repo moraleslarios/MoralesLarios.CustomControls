@@ -22,7 +22,27 @@ using MoralesLarios.CustomsControls.HelpControls.EventArgs;
 
 namespace MoralesLarios.CustomsControls
 {
+
+
+            //    textboxPrincipal   = GetTemplateChild("PART_Text") as TextBox;
+            //textboxSearch      = GetTemplateChild("PART_Search") as TextBox;
+            //popup              = GetTemplateChild("PART_PopUp") as Popup;
+            //CloseButtonPopUp   = GetTemplateChild("PART_ButtonClosePopPup") as Button;
+            //buttonCancelFilter = GetTemplateChild("PART_ButtonCancelFilter") as Button;
+            //buttonFilter       = GetTemplateChild("PART_ButonFilter") as Button;
+            //filterPanel        = GetTemplateChild("PART_FilterPanel") as StackPanel;
+            //imgFilter          = GetTemplateChild("PART_ImgFilter") as Image;
+
+
     [old.ToolboxBitmap(typeof(SearchAll), "SearchAll.bmp")]
+    [TemplatePart(Name = "PART_Text"                , Type = typeof(TextBox   ))]
+    [TemplatePart(Name = "PART_Search"              , Type = typeof(TextBox   ))]
+    [TemplatePart(Name = "PART_PopUp"               , Type = typeof(Popup     ))]
+    [TemplatePart(Name = "PART_ButtonClosePopPup"   , Type = typeof(Button    ))]
+    [TemplatePart(Name = "PART_ButtonCancelFilter"  , Type = typeof(Button    ))]
+    [TemplatePart(Name = "PART_ButonFilter"         , Type = typeof(Button    ))]
+    [TemplatePart(Name = "PART_FilterPanel"         , Type = typeof(StackPanel))]
+    [TemplatePart(Name = "PART_ImgFilter"           , Type = typeof(Image     ))]
     public class SearchAll : Control
     {
         #region Direct Events
@@ -34,13 +54,13 @@ namespace MoralesLarios.CustomsControls
         #endregion
 
 
-        private TextBox    textboxPrincipal;
-        private TextBox    textboxSearch;
-        private Popup      popup;
-        private Button     buttonCancelFilter;
-        private Button     buttonFilter;
-        private StackPanel filterPanel;
-        private Image      imgFilter;
+        private TextBox    TextboxPrincipal;
+        private TextBox    TextboxSearch;
+        private Popup      PopupPrincipal;
+        private Button     ButtonCancelFilter;
+        private Button     ButtonFilter;
+        private StackPanel FilterPanel;
+        private Image      ImgFilter;
 
         private ISupportFilteresSearch supportFiltersSearch;
         private ITaskPool              taskPool;
@@ -86,9 +106,9 @@ namespace MoralesLarios.CustomsControls
         {
             var _obj = sender as SearchAll;
 
-            if(_obj.textboxPrincipal != null)
+            if(_obj.TextboxPrincipal != null)
             {
-                _obj.textboxSearch.Text = e.NewValue?.ToString();
+                _obj.TextboxSearch.Text = e.NewValue?.ToString();
             }
         }
 
@@ -360,8 +380,8 @@ namespace MoralesLarios.CustomsControls
 
             if(funcFilterFactory == null) funcFilterFactory = new FuncFilterFactory();
 
-            popup.Width  = System.Windows.SystemParameters.PrimaryScreenWidth;
-            popup.Height = System.Windows.SystemParameters.PrimaryScreenHeight;
+            PopupPrincipal.Width  = System.Windows.SystemParameters.PrimaryScreenWidth;
+            PopupPrincipal.Height = System.Windows.SystemParameters.PrimaryScreenHeight;
 
         }
 
@@ -385,36 +405,36 @@ namespace MoralesLarios.CustomsControls
 
         private void GetTemplateChields()
         {
-            textboxPrincipal   = GetTemplateChild("PART_Text") as TextBox;
-            textboxSearch      = GetTemplateChild("PART_Search") as TextBox;
-            popup              = GetTemplateChild("PART_PopUp") as Popup;
+            TextboxPrincipal   = GetTemplateChild("PART_Text") as TextBox;
+            TextboxSearch      = GetTemplateChild("PART_Search") as TextBox;
+            PopupPrincipal              = GetTemplateChild("PART_PopUp") as Popup;
             CloseButtonPopUp   = GetTemplateChild("PART_ButtonClosePopPup") as Button;
-            buttonCancelFilter = GetTemplateChild("PART_ButtonCancelFilter") as Button;
-            buttonFilter       = GetTemplateChild("PART_ButonFilter") as Button;
-            filterPanel        = GetTemplateChild("PART_FilterPanel") as StackPanel;
-            imgFilter          = GetTemplateChild("PART_ImgFilter") as Image;
+            ButtonCancelFilter = GetTemplateChild("PART_ButtonCancelFilter") as Button;
+            ButtonFilter       = GetTemplateChild("PART_ButonFilter") as Button;
+            FilterPanel        = GetTemplateChild("PART_FilterPanel") as StackPanel;
+            ImgFilter          = GetTemplateChild("PART_ImgFilter") as Image;
         }
 
         private void InitializeParentParts()
         {
-            textboxPrincipal.Text = Text;
+            TextboxPrincipal.Text = Text;
 
-            imgFilter.Visibility = Visibility.Hidden;
+            ImgFilter.Visibility = Visibility.Hidden;
 
-            buttonCancelFilter.Command = CancelFilterCommand;
-            buttonFilter.Command = FilterCommand;
+            ButtonCancelFilter.Command = CancelFilterCommand;
+            ButtonFilter.Command = FilterCommand;
         }
 
         private void InitializePopulateStackPanelControls()
         {
             Action<string> actionClick = s =>
             {
-                textboxPrincipal.Text = s;
+                TextboxPrincipal.Text = s;
 
                 FilterPrincipal();
             };
 
-            IPopulateStackPanelControls populateStackPanelControls = new PopulateStackPanelControls(filterPanel, actionClick);
+            IPopulateStackPanelControls populateStackPanelControls = new PopulateStackPanelControls(FilterPanel, actionClick);
             populateStackPanelControls.InsertingSugerentControl += PopulateStackPanelControls_InsertingSugerentControl;
             supportFiltersSearch = new SupportFilteresSearch(populateStackPanelControls, ItemsSource);
         }
@@ -445,17 +465,17 @@ namespace MoralesLarios.CustomsControls
                 {
                     IsSearching = taskPool.IsWorking;
 
-                    imgFilter.Visibility = IsSearching ? Visibility.Visible : Visibility.Hidden;
+                    ImgFilter.Visibility = IsSearching ? Visibility.Visible : Visibility.Hidden;
                 }
             };
         }
 
         private void InitializeGetParentControlsEvents()
         {
-            textboxPrincipal.TextChanged += (sender, e) =>
+            TextboxPrincipal.TextChanged += (sender, e) =>
             {
                 //popup.IsOpen = false;
-                Text = textboxPrincipal.Text;
+                Text = TextboxPrincipal.Text;
                 var funcFilter = funcFilterFactory.GetFuncFilter(FilterClass, IsKeySensitive);
 
                 var text = Text;
@@ -466,21 +486,21 @@ namespace MoralesLarios.CustomsControls
                 taskPool.AddAction(action);
             };
 
-            textboxPrincipal.GotFocus += (sender, e) =>
+            TextboxPrincipal.GotFocus += (sender, e) =>
             {
 
-                popup.IsOpen = true;
-                textboxSearch.Focus();
+                PopupPrincipal.IsOpen = true;
+                TextboxSearch.Focus();
 
 
             };
 
-            textboxSearch.KeyDown += (sender, e) =>
+            TextboxSearch.KeyDown += (sender, e) =>
             {
                 if (e.Key == Key.Escape)
                 {
-                    textboxPrincipal.Text = string.Empty;
-                    popup.IsOpen = false;
+                    TextboxPrincipal.Text = string.Empty;
+                    PopupPrincipal.IsOpen = false;
                     IsSearched = false;
                 }
 
@@ -499,7 +519,7 @@ namespace MoralesLarios.CustomsControls
                 }
             };
 
-            CloseButtonPopUp.Click += (sender, e) => popup.IsOpen = false;
+            CloseButtonPopUp.Click += (sender, e) => PopupPrincipal.IsOpen = false;
         }
 
         #endregion
@@ -515,12 +535,12 @@ namespace MoralesLarios.CustomsControls
 
             RaiseFilteringEvent();
 
-            popup.IsOpen = false;
+            PopupPrincipal.IsOpen = false;
 
             var funcFilter = funcFilterFactory.GetFuncFilter(FilterClass, IsKeySensitive);
             await supportFiltersSearch.FilterItemsSourceAsync(Text, funcFilter, FieldsSearch);
 
-            popup.IsOpen = false;
+            PopupPrincipal.IsOpen = false;
             IsSearched = true;
 
             RaiseFilteredEvent();
@@ -538,7 +558,7 @@ namespace MoralesLarios.CustomsControls
 
                 Text = string.Empty;
 
-                popup.IsOpen = false;
+                PopupPrincipal.IsOpen = false;
                 IsSearched = false;
 
                 ResetRaiseFilteredEvent();
