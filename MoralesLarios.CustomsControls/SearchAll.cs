@@ -55,7 +55,7 @@ namespace MoralesLarios.CustomsControls
         private ITaskPool              taskPool;
         private IFuncFilterFactory     funcFilterFactory;
 
-
+        public bool IsDebugMode { get; set; } = false;
 
         static SearchAll()
         {
@@ -394,14 +394,14 @@ namespace MoralesLarios.CustomsControls
 
         private void GetTemplateChields()
         {
-            TextboxPrincipal   = GetTemplateChild("PART_Text") as TextBox;
-            TextboxSearch      = GetTemplateChild("PART_Search") as TextBox;
-            PopupPrincipal              = GetTemplateChild("PART_PopUp") as Popup;
-            CloseButtonPopUp   = GetTemplateChild("PART_ButtonClosePopPup") as Button;
+            TextboxPrincipal   = GetTemplateChild("PART_Text"              ) as TextBox;
+            TextboxSearch      = GetTemplateChild("PART_Search"            ) as TextBox;
+            PopupPrincipal     = GetTemplateChild("PART_PopUp"             ) as Popup;
+            CloseButtonPopUp   = GetTemplateChild("PART_ButtonClosePopPup" ) as Button;
             ButtonCancelFilter = GetTemplateChild("PART_ButtonCancelFilter") as Button;
-            ButtonFilter       = GetTemplateChild("PART_ButonFilter") as Button;
-            FilterPanel        = GetTemplateChild("PART_FilterPanel") as StackPanel;
-            ImgFilter          = GetTemplateChild("PART_ImgFilter") as Image;
+            ButtonFilter       = GetTemplateChild("PART_ButonFilter"       ) as Button;
+            FilterPanel        = GetTemplateChild("PART_FilterPanel"       ) as StackPanel;
+            ImgFilter          = GetTemplateChild("PART_ImgFilter"         ) as Image;
         }
 
         private void InitializeParentParts()
@@ -426,6 +426,7 @@ namespace MoralesLarios.CustomsControls
             IPopulateStackPanelControls populateStackPanelControls = new PopulateStackPanelControls(FilterPanel, actionClick);
             populateStackPanelControls.InsertingSugerentControl += PopulateStackPanelControls_InsertingSugerentControl;
             supportFiltersSearch = new SupportFilteresSearch(populateStackPanelControls, ItemsSource);
+            supportFiltersSearch.ErrorAction += (sender, e) => Dispatcher.Invoke(() => PopupPrincipal.IsOpen = false);
         }
 
         private void PopulateStackPanelControls_InsertingSugerentControl(object sender, HelpControls.EventArgs.ElementPopulateEventArgs e)
@@ -464,15 +465,24 @@ namespace MoralesLarios.CustomsControls
             TextboxPrincipal.TextChanged += (sender, e) =>
             {
                 //popup.IsOpen = false;
-                Text = TextboxPrincipal.Text;
-                var funcFilter = funcFilterFactory.GetFuncFilter(FilterClass, IsKeySensitive);
+                try
+                {
+                    Text = TextboxPrincipal.Text;
+                    var funcFilter = funcFilterFactory.GetFuncFilter(FilterClass, IsKeySensitive);
 
-                var text = Text;
-                var numberSugerencyElements = NumberSugerencyElements;
-                var fieldsSugerenciesSearch = FieldsSugerenciesSearch;
+                    var text = Text;
+                    var numberSugerencyElements = NumberSugerencyElements;
+                    var fieldsSugerenciesSearch = FieldsSugerenciesSearch;
 
-                Action action = () => supportFiltersSearch.PopulateSubResults(text, funcFilter, numberSugerencyElements, fieldsSugerenciesSearch);
-                taskPool.AddAction(action);
+                    Action action = () => supportFiltersSearch.PopulateSubResults(text, funcFilter, numberSugerencyElements, fieldsSugerenciesSearch, IsDebugMode);
+                    taskPool.AddAction(action);
+                }
+                catch (Exception ex)
+                {
+                    PopupPrincipal.IsOpen = false;
+
+                    throw ex;
+                }
             };
 
             TextboxPrincipal.GotFocus += (sender, e) =>
@@ -520,19 +530,28 @@ namespace MoralesLarios.CustomsControls
 
         public async void FilterPrincipal(string txtSearch = null)
         {
-            if (txtSearch != null) Text = txtSearch;
+            try
+            {
+                if (txtSearch != null) Text = txtSearch;
 
-            RaiseFilteringEvent();
+                RaiseFilteringEvent();
 
-            PopupPrincipal.IsOpen = false;
+                PopupPrincipal.IsOpen = false;
 
-            var funcFilter = funcFilterFactory.GetFuncFilter(FilterClass, IsKeySensitive);
-            await supportFiltersSearch.FilterItemsSourceAsync(Text, funcFilter, FieldsSearch);
+                var funcFilter = funcFilterFactory.GetFuncFilter(FilterClass, IsKeySensitive);
+                await supportFiltersSearch.FilterItemsSourceAsync(Text, funcFilter, FieldsSearch);
 
-            PopupPrincipal.IsOpen = false;
-            IsSearched = true;
+                PopupPrincipal.IsOpen = false;
+                IsSearched = true;
 
-            RaiseFilteredEvent();
+                RaiseFilteredEvent();
+            }
+            catch (Exception ex)
+            {
+                PopupPrincipal.IsOpen = false;
+
+                throw ex;
+            }
         }
 
 

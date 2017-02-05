@@ -30,18 +30,18 @@ namespace MoralesLarios.WPFClientTests
 
         private void SearchAll_InsertingSugerentControl(object sender, CustomsControls.HelpControls.EventArgs.ElementPopulateEventArgs e)
         {
-            if (e.Text?.Contains("Ren") ?? false)
-            {
-                if (e.ControlAdd != null)
-                {
-                    var label = new Label();
-                    label.Content = $"Cambiado ----> {e.Text}";
-                    label.Foreground = Brushes.Red;
+            //if (e.Text?.Contains("Ren") ?? false)
+            //{
+            //    if (e.ControlAdd != null)
+            //    {
+            //        var label = new Label();
+            //        label.Content = $"Cambiado ----> {e.Text}";
+            //        label.Foreground = Brushes.Red;
 
-                    e.ControlAdd = label;
+            //        e.ControlAdd = label;
 
-                }
-            }
+            //    }
+            //}
         }
 
         private bool customMethods(object arg1, object arg2)

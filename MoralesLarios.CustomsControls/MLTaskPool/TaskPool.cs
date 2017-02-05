@@ -58,16 +58,23 @@ namespace MoralesLarios.CustomsControls.MLTaskPool
         
         public void AddAction(Action action)
         {
-            if (action == null) throw new ArgumentNullException(nameof(action), $"The parameter action can't be null");
+            try
+            {
+                if (action == null) throw new ArgumentNullException(nameof(action), $"The parameter action can't be null");
 
-            if(NextActionToExecute == null && ActionActualExecute == null)
-            {
-                NextActionToExecute = action;
-                InitExecuted();
+                if (NextActionToExecute == null && ActionActualExecute == null)
+                {
+                    NextActionToExecute = action;
+                    InitExecuted();
+                }
+                else
+                {
+                    NextActionToExecute = action;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                NextActionToExecute = action;
+                throw ex;
             }
             
             
@@ -80,16 +87,27 @@ namespace MoralesLarios.CustomsControls.MLTaskPool
         {
             IsWorking = true;
 
-            while(NextActionToExecute != null)
+            try
             {
-                taskPoolManager.ChangeTask(ref _actionActualExecute, ref _nextActionToExecute);
+                while (NextActionToExecute != null)
+                {
+                    taskPoolManager.ChangeTask(ref _actionActualExecute, ref _nextActionToExecute);
 
-                await taskPoolManager.ExecuteTaskAsync(ActionActualExecute);
+                    await taskPoolManager.ExecuteTaskAsync(ActionActualExecute);
 
-                ActionActualExecute = null;
+                    ActionActualExecute = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new AggregateException("Error in InitExcecuted. See InnerException for more info.", ex);
+            }
+            finally
+            {
+                IsWorking = false;
             }
 
-            IsWorking = false;
+            
         }
 
 

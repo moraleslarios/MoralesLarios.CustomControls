@@ -7,18 +7,17 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:cc="clr-namespace:MoralesLarios.CustomsControls;assembly=MoralesLarios.CustomsControls"
         mc:Ignorable="d ignore"
-        DataContext="{Binding SearchAllTest, Source={StaticResource Locator}}">
+        DataContext="{Binding SearchAllTest, Source={StaticResource Locator}}" VerticalAlignment="Top" Height="402" Width="488">
 
-    <StackPanel>
-        <cc:SearchAll Margin="200" x:Name="searchAll" Width="200" Height="40" HorizontalAlignment="Left" ItemsSource="{Binding Customers}" NumberSugerencyElements="20" FilterClass="Contains" IsKeySensitive="False" >
+    <Grid>
+        <cc:SearchAll Margin="78,19,0,0" x:Name="searchAll" Width="200" Height="40" HorizontalAlignment="Left" ItemsSource="{Binding Customers}" NumberSugerencyElements="20" FilterClass="Contains" IsKeySensitive="False" VerticalAlignment="Top" >
 
 
         </cc:SearchAll>
-
-        <DataGrid AutoGenerateColumns="True" IsReadOnly="True" ItemsSource="{Binding Customers}" HorizontalAlignment="Left"/>
-
+        <DataGrid AutoGenerateColumns="True" IsReadOnly="True" ItemsSource="{Binding Customers}" HorizontalAlignment="Left" VerticalAlignment="Top"  FontSize="20" Margin="45,83,0,0"/>
 
 
 
-    </StackPanel>
+
+    </Grid>
 </Window>

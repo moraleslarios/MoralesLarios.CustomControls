@@ -29,6 +29,8 @@ namespace MoralesLarios.CustomsControls.HelpControls
             view = CollectionViewSource.GetDefaultView(this.source);
         }
 
+        
+
         public async void FilterItemsSource(object objFilter, Func<object, object, bool> filter, IEnumerable<string> fieldsSearchNames)
         {
             view = CollectionViewSource.GetDefaultView(source);
@@ -63,23 +65,39 @@ namespace MoralesLarios.CustomsControls.HelpControls
 
 
 
-        public void PopulateSubResults(object objFilter, Func<object, object, bool> filter, int count, IEnumerable<string> strFieldsSearchNames)
+        public void PopulateSubResults(object objFilter, Func<object, object, bool> filter, int count, IEnumerable<string> strFieldsSearchNames, bool isDebugMode = false)
         {
             /// Posiblemente haya que hacer esto en asíncrono
 
-            populateStackPanelControls.RemoveControls();
-
-            if (!string.IsNullOrEmpty(objFilter?.ToString()))
+            try
             {
-                var filterResults = source.WhereAllForFuncInOrder(objFilter, filter, count, strFieldsSearchNames)
-                //.Select(displaySugerencyMemberPath)
-                .ToList();
+                if (isDebugMode) OnErrorAction();
 
-                populateStackPanelControls.PopulateWithLinks(filterResults);
+                populateStackPanelControls.RemoveControls();
+
+                if (!string.IsNullOrEmpty(objFilter?.ToString()))
+                {
+                    var filterResults = source.WhereAllForFuncInOrder(objFilter, filter, count, strFieldsSearchNames)
+                    //.Select(displaySugerencyMemberPath)
+                    .ToList();
+
+                    populateStackPanelControls.PopulateWithLinks(filterResults);
+                }
+            }
+            catch (Exception ex)
+            {
+                OnErrorAction();
+
+                throw new AggregateException($"Threre is a problem in filter action. See InnerException for more info", ex);
             }
 
             
         }
+
+
+        public event EventHandler ErrorAction;
+
+        protected virtual void OnErrorAction() => ErrorAction?.Invoke(this, new System.EventArgs());
 
     }
 }
