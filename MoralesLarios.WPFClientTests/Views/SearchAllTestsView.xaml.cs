@@ -55,5 +55,10 @@ namespace MoralesLarios.WPFClientTests
 
             return result;
         }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            var datosFiltrados = searchAll.FilteredItemdSource.OfType<Model.Customer>().ToList();
+        }
     }
 }

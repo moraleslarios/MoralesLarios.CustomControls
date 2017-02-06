@@ -10,11 +10,18 @@
         DataContext="{Binding SearchAllTest, Source={StaticResource Locator}}" VerticalAlignment="Top" Height="402" Width="488">
 
     <Grid>
-        <cc:SearchAll Margin="78,19,0,0" x:Name="searchAll" Width="200" Height="40" HorizontalAlignment="Left" ItemsSource="{Binding Customers}" NumberSugerencyElements="20" FilterClass="Contains" IsKeySensitive="False" VerticalAlignment="Top" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="69*"/>
+            <RowDefinition Height="302*"/>
+        </Grid.RowDefinitions>
+        <cc:SearchAll  x:Name="searchAll"  ItemsSource="{Binding Customers}" NumberSugerencyElements="20" FilterClass="Contains" IsKeySensitive="False" VerticalAlignment="Top" >
 
 
         </cc:SearchAll>
-        <DataGrid AutoGenerateColumns="True" IsReadOnly="True" ItemsSource="{Binding Customers}" HorizontalAlignment="Left" VerticalAlignment="Top"  FontSize="20" Margin="45,83,0,0"/>
+
+        <!--<cc:SearchAll  x:Name="searchAll"  ItemsSource="{Binding Customers}" NumberSugerencyElements="20" FilterClass="Contains" IsKeySensitive="False" VerticalAlignment="Top" />-->
+        <DataGrid AutoGenerateColumns="True" IsReadOnly="True" ItemsSource="{Binding Customers}" HorizontalAlignment="Left" VerticalAlignment="Top"  FontSize="20" Margin="45,14.178,0,0" Grid.Row="1"/>
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="86,270,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="button_Click"/>
 
 
 

@@ -71,7 +71,7 @@
         <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="AllowDrop" Value="true"/>
-        <Setter Property="Height" Value="26"/>
+        <Setter Property="Height" Value="28"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:SearchAll}">
@@ -186,6 +186,9 @@
                             <Setter Property="BorderBrush" TargetName="Border" Value="Green"/>
                             <Setter Property="BorderThickness" TargetName="Border" Value="2"/>
                             <Setter Property="Background" TargetName="PART_ButonFilter" Value="Blue"/>
+                        </Trigger>
+                        <Trigger Property="ItemsSource" Value="{x:Null}">
+                            <Setter Property="IsEnabled" Value="False"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

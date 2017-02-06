@@ -382,7 +382,7 @@ namespace MoralesLarios.CustomsControls
 
             InitializeParentParts();
 
-            if (ItemsSource == null) return;
+            //if (ItemsSource == null) return;
 
             InitializePopulateStackPanelControls();
 
