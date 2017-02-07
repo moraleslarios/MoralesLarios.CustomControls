@@ -7,6 +7,7 @@ using MoralesLarios.CustomsControls.Extensions;
 using System.Windows.Data;
 using System.ComponentModel;
 using MoralesLarios.CustomsControls.Helpers;
+using MoralesLarios.CustomsControls.Exceptions;
 
 namespace MoralesLarios.CustomsControls.HelpControls
 {
@@ -84,11 +85,14 @@ namespace MoralesLarios.CustomsControls.HelpControls
                     populateStackPanelControls.PopulateWithLinks(filterResults);
                 }
             }
-            catch (Exception ex)
+            catch (PropertyNotSupportedException ex)
             {
                 OnErrorAction();
 
-                throw new AggregateException($"Threre is a problem in filter action. See InnerException for more info", ex);
+                System.Windows.MessageBox.Show($"{ex.Message}. {Environment.NewLine}{Environment.NewLine}InnerException:{ex?.InnerException?.InnerException?.Message}", 
+                    "Error", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
+
+                
             }
 
             

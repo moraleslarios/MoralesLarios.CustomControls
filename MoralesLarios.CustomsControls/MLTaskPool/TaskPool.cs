@@ -1,4 +1,5 @@
-﻿using MoralesLarios.CustomsControls.Helpers;
+﻿using MoralesLarios.CustomsControls.Exceptions;
+using MoralesLarios.CustomsControls.Helpers;
 using System;
 using System.Threading.Tasks;
 
@@ -98,9 +99,9 @@ namespace MoralesLarios.CustomsControls.MLTaskPool
                     ActionActualExecute = null;
                 }
             }
-            catch (Exception ex)
+            catch (PropertyNotSupportedException ex)
             {
-                throw new AggregateException("Error in InitExcecuted. See InnerException for more info.", ex);
+                throw ex;
             }
             finally
             {
