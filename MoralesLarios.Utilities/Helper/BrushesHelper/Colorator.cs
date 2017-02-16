@@ -16,7 +16,7 @@ namespace MoralesLarios.Utilities.Helper.BrushesHelper
         {
             Storyboard sb = new Storyboard();
             ColorAnimation animation;
-
+             
             // Animate the brush 
             animation = new ColorAnimation();
             animation.To = brush;
