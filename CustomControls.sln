@@ -11,9 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoralesLarios.CustomsContro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfSressTests", "WpfSressTests\WpfSressTests.csproj", "{850DEDE9-3AF9-4D25-A8AA-36E0C5C4B443}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFTests2", "WPFTests2\WPFTests2.csproj", "{DBF31121-6DA5-4D79-A857-95F47E664FF9}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{9ACED6F9-6934-40CC-A7DA-D60B41D92A71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoralesLarios.Utilities", "MoralesLarios.Utilities\MoralesLarios.Utilities.csproj", "{A78A19BD-9DEF-4E0D-8F41-1249E637CDEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoralesLarios.Utilities.ClientTests", "MoralesLarios.Utilities.ClientTests\MoralesLarios.Utilities.ClientTests.csproj", "{0A32ECEE-14B3-44B8-8BD8-7186558DFC96}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +39,14 @@ Global
 		{850DEDE9-3AF9-4D25-A8AA-36E0C5C4B443}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{850DEDE9-3AF9-4D25-A8AA-36E0C5C4B443}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{850DEDE9-3AF9-4D25-A8AA-36E0C5C4B443}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DBF31121-6DA5-4D79-A857-95F47E664FF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DBF31121-6DA5-4D79-A857-95F47E664FF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DBF31121-6DA5-4D79-A857-95F47E664FF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DBF31121-6DA5-4D79-A857-95F47E664FF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A78A19BD-9DEF-4E0D-8F41-1249E637CDEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A78A19BD-9DEF-4E0D-8F41-1249E637CDEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A78A19BD-9DEF-4E0D-8F41-1249E637CDEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A78A19BD-9DEF-4E0D-8F41-1249E637CDEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A32ECEE-14B3-44B8-8BD8-7186558DFC96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A32ECEE-14B3-44B8-8BD8-7186558DFC96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A32ECEE-14B3-44B8-8BD8-7186558DFC96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A32ECEE-14B3-44B8-8BD8-7186558DFC96}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

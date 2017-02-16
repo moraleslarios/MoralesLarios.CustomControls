@@ -4,20 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{ECC6B608-D349-4A79-ABFD-3EB6C131C3B8}</ProjectGuid>
+    <ProjectGuid>{A78A19BD-9DEF-4E0D-8F41-1249E637CDEA}</ProjectGuid>
     <OutputType>library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MoralesLarios.CustomsControls</RootNamespace>
-    <AssemblyName>MoralesLarios.CustomsControls</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <RootNamespace>MoralesLarios.Utilities</RootNamespace>
+    <AssemblyName>MoralesLarios.Utilities</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
-    <SccProjectName>SAK</SccProjectName>
-    <SccLocalPath>SAK</SccLocalPath>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccProvider>SAK</SccProvider>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -37,11 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -60,24 +52,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControl1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+    <Compile Include="CustomControl1.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Exceptions\PropertyNotSupportedException.cs" />
-    <Compile Include="Extensions\Extensions.cs" />
-    <Compile Include="Factories\ObjectsFactory.cs" />
-    <Compile Include="HelpControls\EventArgs\ElementPopulateEventArgs.cs" />
-    <Compile Include="HelpControls\FuncFilterFactory.cs" />
-    <Compile Include="HelpControls\IFuncFilterFactory.cs" />
-    <Compile Include="HelpControls\IPopulateStackPanelControls.cs" />
-    <Compile Include="HelpControls\ISupportFilteresSearch.cs" />
-    <Compile Include="HelpControls\PopulateStackPanelControls.cs" />
-    <Compile Include="HelpControls\SupportFilteresSearch.cs" />
-    <Compile Include="Helpers\ObservableObject.cs" />
-    <Compile Include="Helpers\RelayCommand.cs" />
+    <Compile Include="Excel\ExcelActions.cs" />
+    <Compile Include="Helper\BrushesHelper\Colorator.cs" />
+    <Compile Include="Helper\Excel\AllCopyItems.cs" />
+    <Compile Include="Helper\Excel\BuilderObjects.cs" />
+    <Compile Include="Helper\Excel\ConstStrings.cs" />
+    <Compile Include="Helper\Excel\ContextMenuBuilder.cs" />
+    <Compile Include="Helper\Excel\Converters.cs" />
+    <Compile Include="Helper\Excel\ExcelActionsCommandGenerator.cs" />
+    <Compile Include="Helper\Excel\ExcelActionsCommandInfo.cs" />
+    <Compile Include="Helper\Excel\Extensions.cs" />
+    <Compile Include="Helper\Excel\IBuilderObjects.cs" />
+    <Compile Include="Helper\Excel\IClipBoardCopier.cs" />
+    <Compile Include="Helper\Excel\IItemsSourceItems.cs" />
+    <Compile Include="Helper\Excel\ItemsSourceIntems.cs" />
+    <Compile Include="Helper\Excel\RelayCommand.cs" />
+    <Compile Include="Helper\Excel\SelectedCopyItems.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -91,41 +86,15 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="SearchAll.cs" />
-    <Compile Include="MLTaskPool\ITaskPool.cs" />
-    <Compile Include="MLTaskPool\ITaskPoolManager.cs" />
-    <Compile Include="MLTaskPool\TaskPool.cs" />
-    <Compile Include="MLTaskPool\TaskPoolManager.cs" />
-    <Compile Include="UserControl1.xaml.cs">
-      <DependentUpon>UserControl1.xaml</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\find1_default.png" />
-    <Resource Include="Images\find2_default.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\filter-icon-14.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="SearchAll.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="nuget .exe" />
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\packages\codecracker.CSharp.1.0.1\analyzers\dotnet\cs\CodeCracker.Common.dll" />
-    <Analyzer Include="..\packages\codecracker.CSharp.1.0.1\analyzers\dotnet\cs\CodeCracker.CSharp.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

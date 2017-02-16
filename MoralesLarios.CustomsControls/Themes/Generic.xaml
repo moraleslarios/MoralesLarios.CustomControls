@@ -3,6 +3,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+    xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" 
     mc:Ignorable="d"
     xmlns:local="clr-namespace:MoralesLarios.CustomsControls">
 
@@ -131,6 +133,16 @@
                                                         <StackPanel.Resources>
                                                             <Style TargetType="TextBlock" BasedOn="{StaticResource txtSugerency}"/>
                                                         </StackPanel.Resources>
+                                                        <i:Interaction.Behaviors>
+                                                            <ei:FluidMoveBehavior AppliesTo="Children" Duration="0:0:0.1">
+                                                                <ei:FluidMoveBehavior.EaseY>
+                                                                    <BackEase EasingMode="EaseOut"/>
+                                                                </ei:FluidMoveBehavior.EaseY>
+                                                                <ei:FluidMoveBehavior.EaseX>
+                                                                    <BackEase EasingMode="EaseOut"/>
+                                                                </ei:FluidMoveBehavior.EaseX>
+                                                            </ei:FluidMoveBehavior>
+                                                        </i:Interaction.Behaviors>
                                                     </StackPanel>
                                                     <TextBlock Text="Morales Larios" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,5,20,0" Foreground="#FF4D4C4C" FontWeight="Bold"/>
                                                 </Grid>
