@@ -9,11 +9,18 @@
         Title="MainWindow" Height="850" Width="525">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="11*"/>
+            <RowDefinition Height="13*"/>
+            <RowDefinition Height="13*"/>
         </Grid.RowDefinitions>
-        <ListBox x:Name="lstDatos" SelectionMode="Multiple" ml:ExcelActions.EnabledPasteExcel="True" ml:ExcelActions.EnabledCopyExcel="True" ml:ExcelActions.ContainsHeader="True" ml:ExcelActions.CreateContextMenu="True">
+        <Button x:Name="bt" Content="cambiar" Click="bt_Click"/>
+        <ListBox x:Name="lstDatos" SelectionMode="Multiple" 
+                 ml:ExcelActions.EnabledPasteExcel="False" 
+                 ml:ExcelActions.EnabledCopyExcel="True" 
+                 ml:ExcelActions.ContainsHeader="True" 
+                 ml:ExcelActions.CreateContextMenu="True" 
+                 ml:ExcelActions.ColorFlash="AliceBlue" Grid.Row="1">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -24,8 +31,18 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <DataGrid x:Name="dgDatos" Grid.Row="1" AutoGenerateColumns="True" ml:ExcelActions.EnabledPasteExcel="True" ml:ExcelActions.EnabledCopyExcel="True" ml:ExcelActions.ContainsHeader="True" ml:ExcelActions.CreateContextMenu="True"/>
-        <ListBox x:Name="lswDatos" Grid.Row="2"  SelectionMode="Multiple"  ml:ExcelActions.EnabledPasteExcel="True" ml:ExcelActions.EnabledCopyExcel="True" ml:ExcelActions.ContainsHeader="True" ml:ExcelActions.CreateContextMenu="True">
+        <DataGrid x:Name="dgDatos" Grid.Row="2" RowBackground="Transparent" AutoGenerateColumns="True" 
+                  ml:ExcelActions.EnabledPasteExcel="True" 
+                  ml:ExcelActions.EnabledCopyExcel="True" 
+                  ml:ExcelActions.ContainsHeader="False" 
+                  ml:ExcelActions.CreateContextMenu="True" 
+                  ml:ExcelActions.PaintFlash="True"/>
+        <ListBox x:Name="lswDatos" Grid.Row="3"  SelectionMode="Multiple"  
+                 ml:ExcelActions.EnabledPasteExcel="False" 
+                 ml:ExcelActions.EnabledCopyExcel="True" 
+                 ml:ExcelActions.ContainsHeader="True" 
+                 ml:ExcelActions.CreateContextMenu="True" 
+                 ml:ExcelActions.ColorFlash="Red">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">

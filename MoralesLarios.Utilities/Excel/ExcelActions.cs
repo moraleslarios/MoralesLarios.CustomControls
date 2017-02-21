@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using MoralesLarios.Utilities.Helper.Excel;
 using MoralesLarios.Utilities.Helper.BrushesHelper;
+using System.Windows.Media;
 
 namespace MoralesLarios.Utilities.Excel
 {
@@ -22,6 +23,9 @@ namespace MoralesLarios.Utilities.Excel
         private static IClipBoardCopier  selectedCopier;
         private static IBuilderObjects   builderObjects;
         private static IItemsSourceItems itemsSourceInserts;
+        //private static IKeyBindingInputs keyBindingsInputCopies;
+        //private static IKeyBindingInputs keyBindingsInputPaste;
+        //private static IKeyBindingWorker keyBindingWorker;
 
 
 
@@ -34,6 +38,9 @@ namespace MoralesLarios.Utilities.Excel
             builderObjects               = new BuilderObjects();
             itemsSourceInserts           = new ItemsSourceIntems(builderObjects);
             excelActionsCommandGenerator = new ExcelActionsCommandGenerator(allCopier, selectedCopier, itemsSourceInserts, colorator);
+            //keyBindingsInputCopies       = new KeyBindingInputsCopies();
+            //keyBindingsInputPaste        = new KeyBindingInputsPaste();
+            //keyBindingWorker             = new KeyBindingWorker();
         }
 
 
@@ -62,13 +69,11 @@ namespace MoralesLarios.Utilities.Excel
 
         private static void OnEnabledCopyExcelChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if ((bool)e.NewValue == false) return;
-
             var itemsControl = d as ItemsControl;
 
-            var commands = excelActionsCommandGenerator.GenerateCommands(d, GetContainsHeader(d), GetShowErrorMessages(d), GetCancelWithErrors(d));
+            var commands = CreateCommands(d);
 
-            contextMenuBuilder.CreateContextMenuCopiesForCondition(d as FrameworkElement, commands.CopyAllCommmand, commands.CopyCommand, GetCreateContextMenu(d));
+            contextMenuBuilder.CreateContextMenuCopiesForCondition(d as FrameworkElement, commands.CopyAllCommmand, commands.CopyCommand, GetCreateContextMenu(d), GetEnabledCopyExcel(d));
 
             itemsControl.InputBindings.Add(
                     new KeyBinding { Key = Key.A, Modifiers = ModifierKeys.Control, Command = commands.CopyAllCommmand }
@@ -102,11 +107,13 @@ namespace MoralesLarios.Utilities.Excel
 
         private static void OnEnabledPasteExcelChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            if (GetEnabledPasteExcel(d) == false) return;
+
             var frameworkElement = d as FrameworkElement;
 
-            var commands = excelActionsCommandGenerator.GenerateCommands(d, GetContainsHeader(d), GetShowErrorMessages(d), GetCancelWithErrors(d));
+            var commands = CreateCommands(d);
 
-            contextMenuBuilder.CreateContextMenuPasteForCondition(d as FrameworkElement, commands.PasteCommand, GetCreateContextMenu(d));
+            contextMenuBuilder.CreateContextMenuPasteForCondition(d as FrameworkElement, commands.PasteCommand, GetCreateContextMenu(d), GetEnabledPasteExcel(d));
 
             frameworkElement.InputBindings.Add(
                     new KeyBinding { Key = Key.V, Modifiers = ModifierKeys.Control, Command = commands.PasteCommand }
@@ -123,6 +130,45 @@ namespace MoralesLarios.Utilities.Excel
         #region Control AttachProperties
 
 
+
+
+        public static bool GetPaintFlash(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(PaintFlashProperty);
+        }
+
+        public static void SetPaintFlash(DependencyObject obj, bool value)
+        {
+            obj.SetValue(PaintFlashProperty, value);
+        }
+
+        // Using a DependencyProperty as the backing store for PaintFlash.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty PaintFlashProperty =
+            DependencyProperty.RegisterAttached("PaintFlash", typeof(bool), typeof(ExcelActions), new PropertyMetadata(true, OnPaintFlashChanged));
+
+        private static void OnPaintFlashChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            ComponentChange(d);
+        }
+
+        public static SolidColorBrush GetColorFlash(DependencyObject obj)
+        {
+            return (SolidColorBrush)obj.GetValue(ColorFlashProperty);
+        }
+
+        public static void SetColorFlash(DependencyObject obj, SolidColorBrush value)
+        {
+            obj.SetValue(ColorFlashProperty, value);
+        }
+
+        // Using a DependencyProperty as the backing store for ColorFlash.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ColorFlashProperty =
+            DependencyProperty.RegisterAttached("ColorFlash", typeof(SolidColorBrush), typeof(ExcelActions), new PropertyMetadata(Brushes.Gray, OnColorFlashChanged));
+
+        private static void OnColorFlashChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            ComponentChange(d);
+        }
 
         public static bool GetContainsHeader(DependencyObject obj)
         {
@@ -198,43 +244,12 @@ namespace MoralesLarios.Utilities.Excel
         {
             bool change = (bool)baseValue;
 
-            //var frammeworkElement = d as FrameworkElement;
-
-            //if (frammeworkElement.ContextMenu == null) return baseValue;
-
-            //var headers = new string[] { "Copy All       (Ctrl + A)", "Copy Selecteds (Ctrl + A)", "Paste          (Ctrl + V)" };
-
-            //bool allHiden = true;
-
-            //foreach (var menuItem in frammeworkElement.ContextMenu.Items)
-            //{
-            //    var menuItemCast = menuItem as MenuItem;
-
-            //    if (headers.Contains(menuItemCast?.Header.ToString()))
-            //    {
-            //        menuItemCast.Visibility = change ? Visibility.Visible : Visibility.Collapsed;
-            //    }
-            //    else
-            //    {
-            //        allHiden = false;
-            //    }
-            //}
-
-            //frammeworkElement.ContextMenu.Visibility = allHiden ? Visibility.Collapsed : Visibility.Visible;
-
             return baseValue;
         }
 
         private static void OnCreateContextMenuPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            bool change = (bool)e.NewValue;
-
-            var frammeworkElement = d as FrameworkElement;
-
-            var commands = excelActionsCommandGenerator.GenerateCommands(d, GetContainsHeader(d), GetShowErrorMessages(d), GetCancelWithErrors(d));
-
-            contextMenuBuilder.CreateContextMenuCopiesForCondition(d as FrameworkElement, commands.CopyAllCommmand, commands.CopyCommand, GetCreateContextMenu(d));
-            contextMenuBuilder.CreateContextMenuPasteForCondition (d as FrameworkElement, commands.PasteCommand   , GetCreateContextMenu(d));
+            ComponentChange(d);
         }
 
 
@@ -242,6 +257,46 @@ namespace MoralesLarios.Utilities.Excel
 
 
         #endregion
+
+
+        private static void ComponentChange(DependencyObject d)
+        {
+            var frammeworkElement = d as FrameworkElement;
+
+            var commands = CreateCommands(d);
+
+            contextMenuBuilder.CreateContextMenuCopiesForCondition(d as FrameworkElement, commands.CopyAllCommmand, commands.CopyCommand, GetCreateContextMenu(d), GetEnabledCopyExcel(d));
+            contextMenuBuilder.CreateContextMenuPasteForCondition (d as FrameworkElement, commands.PasteCommand, GetCreateContextMenu(d), GetEnabledPasteExcel(d));
+
+            OnEnabledCopyExcelChanged (d, new DependencyPropertyChangedEventArgs());
+            OnEnabledPasteExcelChanged(d, new DependencyPropertyChangedEventArgs());
+        }
+
+
+        private static ExcelActionsCommandInfo CreateCommands(DependencyObject d)
+        {
+            var parameters = BuildActionsParameters(d);
+
+            var result = excelActionsCommandGenerator.GenerateCommands(d);
+
+            return result;
+        }
+
+
+
+        private static ExcelActionsCommandsParameters BuildActionsParameters(DependencyObject d)
+        {
+            var result = new ExcelActionsCommandsParameters
+            {
+                ContainsHeader    = GetContainsHeader(d),
+                ShowErrorMessages = GetShowErrorMessages(d),
+                CancelWithErrors  = GetCancelWithErrors(d),
+                PaintFlash        = GetPaintFlash(d),
+                ColorFlash        = GetColorFlash(d)
+            };
+
+            return result;
+        }
 
 
 

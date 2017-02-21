@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MoralesLarios.Utilities.Excel;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -31,6 +32,11 @@ namespace MoralesLarios.Utilities.ClientTests
             dgDatos.ItemsSource = Datos;
             lstDatos.ItemsSource = new ObservableCollection<Customer>(Customer.GetData());
             lswDatos.ItemsSource = new ObservableCollection<Customer>(Customer.GetData());
+        }
+
+        private void bt_Click(object sender, RoutedEventArgs e)
+        {
+            ExcelActions.SetColorFlash(dgDatos, Brushes.Yellow);
         }
     }
 }

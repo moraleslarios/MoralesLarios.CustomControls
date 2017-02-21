@@ -8,6 +8,7 @@ using System.Windows.Input;
 using MoralesLarios.Utilities.Helper.BrushesHelper;
 using System.Windows.Controls;
 using System.Windows.Media;
+using MoralesLarios.Utilities.Excel;
 
 namespace MoralesLarios.Utilities.Helper.Excel
 {
@@ -29,15 +30,15 @@ namespace MoralesLarios.Utilities.Helper.Excel
         }
 
 
-        public ExcelActionsCommandInfo GenerateCommands(DependencyObject d, bool getContainsHeader, bool getShowErrorMessages, bool getCancelWithErrors)
+        public ExcelActionsCommandInfo GenerateCommands(DependencyObject d)
         {
-            ICommand commandCopyAll = new RelayCommands(ActionWithAnimation( a => allCopier    .Copy(d, getContainsHeader), d), a => allCopier.CanCopy(d));
-            ICommand commandCopy    = new RelayCommands(ActionWithAnimation(a => selectedCopier.Copy(d, getContainsHeader), d), a => selectedCopier.CanCopy(d));
+            ICommand commandCopyAll = new RelayCommands(ActionWithAnimation(a => allCopier     .Copy(d, ExcelActions.GetContainsHeader(d)), d), a => allCopier.CanCopy(d)     );
+            ICommand commandCopy    = new RelayCommands(ActionWithAnimation(a => selectedCopier.Copy(d, ExcelActions.GetContainsHeader(d)), d), a => selectedCopier.CanCopy(d));
             ICommand pasteCommand   = new RelayCommands(ActionWithAnimation(a => itemsSourceInserts.Insert(d,
                                                                                      Clipboard.GetText(),
-                                                                                     getShowErrorMessages,
-                                                                                     getCancelWithErrors),d),
-                                                      a => Clipboard.ContainsText());
+                                                                                     ExcelActions.GetShowErrorMessages(d),
+                                                                                     ExcelActions.GetCancelWithErrors(d)),d),
+                                                                            a => Clipboard.ContainsText());
 
             var result = new ExcelActionsCommandInfo { CopyAllCommmand = commandCopyAll, CopyCommand = commandCopy, PasteCommand = pasteCommand };
 
@@ -53,7 +54,7 @@ namespace MoralesLarios.Utilities.Helper.Excel
 
                 var control = (Control)d;
 
-                colorator.FlashColor(control, Colors.Black);
+                if(ExcelActions.GetPaintFlash(d)) colorator.FlashColor(control, ExcelActions.GetColorFlash(d).Color);
             };
 
         }

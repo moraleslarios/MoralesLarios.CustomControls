@@ -62,22 +62,22 @@ namespace MoralesLarios.Utilities.Helper.Excel
         }
 
 
-        public void CreateContextMenuCopiesForCondition(FrameworkElement control, ICommand commandCopyAll, ICommand commandCopy, bool condition)
+        public void CreateContextMenuCopiesForCondition(FrameworkElement control, ICommand commandCopyAll, ICommand commandCopy, bool condition, bool actionCondition)
         {
             DeleteMenusCopies(control);
 
-            if (condition)
+            if (condition && actionCondition)
             {
                 CreateContextMenuCopies(control, commandCopyAll, commandCopy);
             }
 
         }
 
-        public void CreateContextMenuPasteForCondition(FrameworkElement control, ICommand commandPaste, bool condition)
+        public void CreateContextMenuPasteForCondition(FrameworkElement control, ICommand commandPaste, bool condition, bool actionCondition)
         {
             DeleteMenusPaste(control);
 
-            if (condition)
+            if (condition && actionCondition)
             {
                 CreateContextMenuPaste(control, commandPaste);
             }

@@ -175,7 +175,7 @@ namespace MoralesLarios.Utilities.Helper.Excel
 
 
 
-        private static IEnumerable<object> ToListObj(this IEnumerable source)
+        public static IEnumerable<object> ToListObj(this IEnumerable source)
         {
             foreach(var s in source)
             {

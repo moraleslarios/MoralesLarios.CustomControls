@@ -58,6 +58,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Excel\ExcelActions.cs" />
+    <Compile Include="Excel\IKeyBindingWorker.cs" />
+    <Compile Include="Excel\KeyBindingWorker.cs" />
     <Compile Include="Helper\BrushesHelper\Colorator.cs" />
     <Compile Include="Helper\Excel\AllCopyItems.cs" />
     <Compile Include="Helper\Excel\BuilderObjects.cs" />
@@ -66,6 +68,7 @@
     <Compile Include="Helper\Excel\Converters.cs" />
     <Compile Include="Helper\Excel\ExcelActionsCommandGenerator.cs" />
     <Compile Include="Helper\Excel\ExcelActionsCommandInfo.cs" />
+    <Compile Include="Helper\Excel\ExcelActionsCommandsParameters.cs" />
     <Compile Include="Helper\Excel\Extensions.cs" />
     <Compile Include="Helper\Excel\IBuilderObjects.cs" />
     <Compile Include="Helper\Excel\IClipBoardCopier.cs" />
