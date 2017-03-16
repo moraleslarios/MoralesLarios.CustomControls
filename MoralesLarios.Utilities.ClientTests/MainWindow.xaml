@@ -17,7 +17,7 @@
         <Button x:Name="bt" Content="cambiar" Click="bt_Click"/>
         <ListBox x:Name="lstDatos" SelectionMode="Multiple" 
                  ml:ExcelActions.EnabledPasteExcel="False" 
-                 ml:ExcelActions.EnabledCopyExcel="True" 
+                 ml:ExcelActions.EnabledCopyExcel="False" 
                  ml:ExcelActions.ContainsHeader="True" 
                  ml:ExcelActions.CreateContextMenu="True" 
                  ml:ExcelActions.ColorFlash="AliceBlue" Grid.Row="1">
