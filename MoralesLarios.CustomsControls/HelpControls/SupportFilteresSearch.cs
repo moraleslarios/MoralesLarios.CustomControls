@@ -16,7 +16,7 @@ namespace MoralesLarios.CustomsControls.HelpControls
 
         private readonly IPopulateStackPanelControls populateStackPanelControls;
 
-        private IEnumerable<object> source;
+        public IEnumerable<object> Source { get; set; }
 
         private ICollectionView view;
 
@@ -25,25 +25,25 @@ namespace MoralesLarios.CustomsControls.HelpControls
         {
             this.populateStackPanelControls = populateStackPanelControls;
 
-            this.source = source;
+            this.Source = source;
 
-            view = CollectionViewSource.GetDefaultView(this.source);
+            view = CollectionViewSource.GetDefaultView(this.Source);
         }
 
         
 
         public async void FilterItemsSource(object objFilter, Func<object, object, bool> filter, IEnumerable<string> fieldsSearchNames)
         {
-            view = CollectionViewSource.GetDefaultView(source);
+            view = CollectionViewSource.GetDefaultView(Source);
 
-            await source.FuncFilterAllInFieldsAsync(view, objFilter, filter, fieldsSearchNames);
+            await Source.FuncFilterAllInFieldsAsync(view, objFilter, filter, fieldsSearchNames);
         }
 
         public Task FilterItemsSourceAsync(object objFilter, Func<object, object, bool> filter, IEnumerable<string> fieldsSearchNames)
         {
-            view = CollectionViewSource.GetDefaultView(source);
+            view = CollectionViewSource.GetDefaultView(Source);
 
-            return source.FuncFilterAllInFieldsAsync(view, objFilter, filter, fieldsSearchNames);
+            return Source.FuncFilterAllInFieldsAsync(view, objFilter, filter, fieldsSearchNames);
         }
 
         public IEnumerable<object> GetFilteredAllItemSource(IEnumerable<object> itemsSource)
@@ -78,7 +78,7 @@ namespace MoralesLarios.CustomsControls.HelpControls
 
                 if (!string.IsNullOrEmpty(objFilter?.ToString()))
                 {
-                    var filterResults = source.WhereAllForFuncInOrder(objFilter, filter, count, strFieldsSearchNames)
+                    var filterResults = Source.WhereAllForFuncInOrder(objFilter, filter, count, strFieldsSearchNames)
                     //.Select(displaySugerencyMemberPath)
                     .ToList();
 

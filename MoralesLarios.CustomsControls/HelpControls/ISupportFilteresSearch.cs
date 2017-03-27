@@ -11,6 +11,7 @@ namespace MoralesLarios.CustomsControls.HelpControls
         Task FilterItemsSourceAsync(object objFilter, Func<object, object, bool> filter, IEnumerable<string> fieldsSearchNames);
         IEnumerable<object> GetFilteredAllItemSource(IEnumerable<object> itemsSource);
         IEnumerable<object> GetFilteredItemSource(IEnumerable<object> itemsSource);
+        IEnumerable<object> Source { get; set; }
 
         event EventHandler ErrorAction;
     }

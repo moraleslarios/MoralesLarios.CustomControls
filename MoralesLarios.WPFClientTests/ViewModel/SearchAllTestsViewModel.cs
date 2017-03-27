@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using MoralesLarios.WPFClientTests.Model;
 using System.Collections.ObjectModel;
 
@@ -10,7 +11,7 @@ namespace MoralesLarios.WPFClientTests.ViewModel
 
         public SearchAllTestsViewModel()
         {
-            Customers = new ObservableCollection<Customer>(Customer.GetData());
+            //Customers = new ObservableCollection<Customer>(Customer.GetData());
 
             Fields = new ObservableCollection<string>() { "ID", "Name" };
         }
@@ -46,6 +47,20 @@ namespace MoralesLarios.WPFClientTests.ViewModel
             }
         }
 
+
+
+        public RelayCommand Command1
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    Customers = new ObservableCollection<Customer>(Customer.GetData());
+                });
+
+            }
+
+        }
 
 
 

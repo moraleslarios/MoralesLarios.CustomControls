@@ -7,7 +7,7 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:cc="clr-namespace:MoralesLarios.CustomsControls;assembly=MoralesLarios.CustomsControls"
         mc:Ignorable="d ignore"
-        DataContext="{Binding SearchAllTest, Source={StaticResource Locator}}" VerticalAlignment="Top" Height="402" Width="488">
+        DataContext="{Binding SearchAllTest, Source={StaticResource Locator}}" VerticalAlignment="Top" Height="501.932" Width="488">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -20,8 +20,10 @@
         </cc:SearchAll>
 
         <!--<cc:SearchAll  x:Name="searchAll"  ItemsSource="{Binding Customers}" NumberSugerencyElements="20" FilterClass="Contains" IsKeySensitive="False" VerticalAlignment="Top" />-->
-        <DataGrid AutoGenerateColumns="True" IsReadOnly="True" ItemsSource="{Binding Customers}" HorizontalAlignment="Left" VerticalAlignment="Top"  FontSize="20" Margin="45,14.178,0,0" Grid.Row="1"/>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="86,270,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="button_Click"/>
+        <DataGrid AutoGenerateColumns="True" IsReadOnly="True" ItemsSource="{Binding Customers}" HorizontalAlignment="Left" VerticalAlignment="Top"  FontSize="20" Margin="10,5,0,0" Grid.Row="1"/>
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="10,350,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="button_Click"/>
+        <Button x:Name="button_Copy" Content="1" HorizontalAlignment="Left" Margin="395,45,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Command="{Binding Command1}"/>
+        <Button x:Name="button_Copy1" Content="2" HorizontalAlignment="Left" Margin="395,73,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" />
 
 
 

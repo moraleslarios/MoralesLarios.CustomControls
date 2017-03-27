@@ -144,7 +144,14 @@ namespace MoralesLarios.CustomsControls
 
 
         public static readonly DependencyProperty ItemsSourceProperty =
-            DependencyProperty.Register(nameof(ItemsSource), typeof(IEnumerable<object>), typeof(SearchAll), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(ItemsSource), typeof(IEnumerable<object>), typeof(SearchAll), new PropertyMetadata(null, OnItemsSourcePropertyChanged));
+
+        private static void OnItemsSourcePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var _obj = d as SearchAll;
+
+            if (_obj.funcFilterFactory != null) _obj.supportFiltersSearch.Source = e.NewValue as IEnumerable<object>;
+        }
 
         public IEnumerable<object> ItemsSource
         {
@@ -429,6 +436,8 @@ namespace MoralesLarios.CustomsControls
             supportFiltersSearch.ErrorAction += (sender, e) => Dispatcher.Invoke(() => PopupPrincipal.IsOpen = false);
         }
 
+
+
         private void PopulateStackPanelControls_InsertingSugerentControl(object sender, HelpControls.EventArgs.ElementPopulateEventArgs e)
         {
             OnInsertingSugerentControl(e);
@@ -464,7 +473,7 @@ namespace MoralesLarios.CustomsControls
         {
             TextboxPrincipal.TextChanged += (sender, e) =>
             {
-                //popup.IsOpen = false;
+                //PopupPrincipal.IsOpen = false;
                 try
                 {
                     Text = TextboxPrincipal.Text;
@@ -505,7 +514,7 @@ namespace MoralesLarios.CustomsControls
 
                 if (e.Key == Key.Return)
                 {
-                    //popup.IsOpen = false;
+                    //PopupPrincipal.IsOpen = false;
 
                     if (Text == string.Empty)
                     {
