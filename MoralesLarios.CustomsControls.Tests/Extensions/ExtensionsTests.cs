@@ -10,6 +10,7 @@ namespace MoralesLarios.CustomsControls.Tests
     [TestClass]
     public class ExtensionsTests
     {
+        // coment.
 
         public IEnumerable<Customer> customers;
 
@@ -20,6 +21,17 @@ namespace MoralesLarios.CustomsControls.Tests
         {
             customers = Customer.GetData().ToList();
         }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
