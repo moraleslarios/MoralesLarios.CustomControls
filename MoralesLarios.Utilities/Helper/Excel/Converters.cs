@@ -30,6 +30,7 @@ namespace MoralesLarios.Utilities.Helper.Excel
                         case "System.Double"  : resultado = double.Parse(valor); break;
                         case "System.Decimal" : resultado = decimal.Parse(valor); break;
                         case "System.Int64"   : resultado = long.Parse(valor); break;
+                        case "System.Boolean": resultado = bool.Parse(valor); break;
                         case "System.Nullable":
                             string tipoDelNulable = propiedad.PropertyType.FullName.Split('`')[1];
                             if (tipoDelNulable.Contains("System.DateTime")) resultado = string.IsNullOrEmpty(valor) ? null : (DateTime?)DateTime.Parse(valor);
@@ -40,6 +41,7 @@ namespace MoralesLarios.Utilities.Helper.Excel
                             if (tipoDelNulable.Contains("System.Double")) resultado = string.IsNullOrEmpty(valor) ? null : (double?)double.Parse(valor);
                             if (tipoDelNulable.Contains("System.Decimal")) resultado = string.IsNullOrEmpty(valor) ? null : (decimal?)decimal.Parse(valor);
                             if (tipoDelNulable.Contains("System.Int64")) resultado = string.IsNullOrEmpty(valor) ? null : (long?)long.Parse(valor);
+                            if (tipoDelNulable.Contains("System.Boolean")) resultado = string.IsNullOrEmpty(valor) ? null : (bool?)bool.Parse(valor);
                             break;
 
                         default: throw new Exception(string.Format("The type {0} is not sopported for this assembly.", fullNameTipe));
